@@ -3,16 +3,16 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main   # runs when you push to main branch
+  trigger:
+- main   # Run when code is pushed to main branch
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- checkout: self
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
 
-- script: |
-    python3 --version
-    python3 hello.py
-  displayName: "Run hello.py from GitHub"
+- script: python hello.py
+  displayName: 'Run Hello Python Script'
